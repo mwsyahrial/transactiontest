@@ -25,30 +25,4 @@ public class TransactionController {
     }
 
 
-        @RequestMapping("/viewemp")
-        public String viewemp(Model m){
-            List<Emp> list=dao.getEmployees();
-            m.addAttribute("list",list);
-            return "viewemp";
-        }
-
-        @RequestMapping(value="/editemp/{id}")
-        public String edit(@PathVariable int id, Model m){
-            Emp emp=dao.getEmpById(id);
-            m.addAttribute("command",emp);
-            return "empeditform";
-        }
-
-        @RequestMapping(value="/editsave",method = RequestMethod.POST)
-        public String editsave(@ModelAttribute("emp") Emp emp){
-            dao.update(emp);
-            return "redirect:/viewemp";
-        }
-
-        @RequestMapping(value="/deleteemp/{id}",method = RequestMethod.GET)
-        public String delete(@PathVariable int id){
-            dao.delete(id);
-            return "redirect:/viewemp";
-        }
-    }
 }
