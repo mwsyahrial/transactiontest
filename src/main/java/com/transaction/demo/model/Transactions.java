@@ -4,18 +4,21 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Transaction {
+public class Transactions {
     @Id
     private Long transactionId;
     private Double amount;
     private String type;
-    private String parentId;
+    private String parentId = "";
 
-    public Transaction(Long transactionId, Double amount, String type, String parentId) {
+    public Transactions(Long transactionId, Double amount, String type, String parentId) {
         this.transactionId = transactionId;
         this.amount = amount;
         this.type = type;
         this.parentId = parentId;
+    }
+    public Transactions(){
+
     }
 
     public Long getTransactionId() {
