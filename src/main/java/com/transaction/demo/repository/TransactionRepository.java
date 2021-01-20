@@ -9,7 +9,10 @@ import java.util.List;
 
 @Repository
 public interface TransactionRepository extends JpaRepository<Transactions, Long> {
-//    @Query("SELECT transactionId FROM transactions trx WHERE trx.type = ?1")
+    @Query("SELECT t.transactionId FROM Transactions t WHERE t.type = ?1")
     List<Long> findByType(String type);
+
+    @Query("SELECT SUM(amount) FROM Transactions WHERE parentId = CAST(?1 as string) or transactionId = ?1 ")
+    Double findSum(Long id);
 
 }
